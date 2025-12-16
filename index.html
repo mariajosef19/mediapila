@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>nombreApp</title>
+        <title>IRUPÉ</title>
 
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -19,26 +19,28 @@
     </head>
 
     <body>
-        <!-- margen a la izquierda y arriba -->
-        <div class="ms-5 mt-5">
-            <h1 class="display-1 text-secondary user-select-none">
-                Bienvenid@ a
-                <span class="titulo-irupe d-block">
-                    IRUPÉ
-                </span>
-            </h1>
-            <img class="d-block mx-auto" src="img/logo.png" alt="Logo" width="300" height="300">
-        </div>
+        <div class="d-flex flex-column min-vh-100 justify-content-center position-relative">
+            
+            <div class="p-4 p-md-5">
+                <h1 class="display-1 text-secondary user-select-none">
+                    Bienvenid@ a
+                    <span class="titulo-irupe d-block">
+                        IRUPÉ
+                    </span>
+                </h1>
+                <img class="d-block mx-auto img-fluid"src="img/logo.png"alt="Logo"style="max-width: 300px;">
+            </div>
 
-        <div class="position-absolute bottom-0 end-0 me-5 mb-5 d-flex align-items-center">
-            <a class="btn btn-lg d-flex align-items-center gap-2 px-4 py-3 shadow btn-comenzar" href="login.html">
-                <span class="fw-semibold">Comenzar</span>
-                <i class="bi bi-arrow-right-circle-fill fs-2"></i>
-            </a>
-        </div>
+            <div class="btn-posicion-mobile position-absolute bottom-0 end-0 me-5 mb-5 d-flex align-items-center">
+                <a class="btn btn-lg d-flex align-items-center gap-2 px-4 py-3 shadow btn-comenzar w-100 justify-content-center" href="login.html">
+                    <span class="fw-semibold">Comenzar</span>
+                    <i class="bi bi-arrow-right-circle-fill fs-2"></i>
+                </a>
+            </div>
 
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
-
+    
 </html>
