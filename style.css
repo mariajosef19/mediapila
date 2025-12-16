@@ -1,17 +1,12 @@
-/* =========================================================
-    VARIABLES DE COLOR DE BOOTSTRAP (LILA COMO PRIMARIO)
-========================================================= */
+/* VARIABLES DE COLOR - TEMA LILA Y NEGRO  */
 :root {
     --bs-primary: #a685e2;
     --bs-primary-rgb: 166, 133, 226;
-
     --bs-link-color: #a685e2;
     --bs-link-hover-color: #c7b0f0;
 }
 
-/* =========================================================
-    ESTILO GENERAL
-========================================================= */
+/* ESTILOS GENERALES DEL BODY */
 body {
     background-color: #0d0d0d;
     color: white;
@@ -25,9 +20,7 @@ body {
     to { opacity: 1; }
 }
 
-/* =========================================================
-TITULAR IRUPÉ (animado)
-========================================================= */
+/*  TÍTULO IRUPÉ CON ANIMACIÓN */
 .titulo-irupe {
     color: transparent;
     -webkit-text-stroke: 2px #ae00ff;
@@ -44,9 +37,75 @@ TITULAR IRUPÉ (animado)
     100% { -webkit-text-stroke-color: #c566f8; }
 }
 
-/* =========================================================
-    BOTÓN "COMENZAR"
-   ========================================================= */
+.btn-editar,
+.btn-eliminar {
+    background: #c77dff !important;      /* elige el color que quieras */
+    border-color: #c77dff !important;
+    color: #f8f8f8 !important;
+}
+
+.btn-selector-fecha {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+}
+
+/* ===== SELECTOR DE MES/AÑO ===== */
+.btn-selector-fecha:hover {
+    background: rgba(166, 133, 226, 0.2) !important;
+    color: var(--color-lila-hover) !important;
+    transform: scale(1.05);
+}
+
+.btn-selector-fecha:focus {
+    box-shadow: none !important;
+}
+
+/* Dropdown de fechas */
+.dropdown-menu-fecha {
+    background: #1e1e1e !important;
+    border: 2px solid var(--color-lila) !important;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.dropdown-menu-fecha .dropdown-item {
+    color: white !important;
+    background: transparent !important;
+    padding: 10px 20px;
+    transition: all 0.2s;
+}
+
+.dropdown-menu-fecha .dropdown-item:hover {
+    background: var(--color-lila) !important;
+    color: white !important;
+}
+
+/* Scrollbar personalizado para dropdown */
+.dropdown-menu-fecha::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown-menu-fecha::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 4px;
+}
+
+.dropdown-menu-fecha::-webkit-scrollbar-thumb {
+    background: var(--color-lila);
+    border-radius: 4px;
+}
+
+.dropdown-menu-fecha::-webkit-scrollbar-thumb:hover {
+    background: var(--color-lila-hover);
+}
+
+
+/* BOTÓN "COMENZAR" DE LA LANDING PAGE */
 .btn-comenzar {
     background-color: #bfbfbf;
     color: #6a4fb9;
@@ -61,9 +120,7 @@ TITULAR IRUPÉ (animado)
     box-shadow: 0 0 15px #ffffff55;
 }
 
-/* =========================================================
-    BOTÓN LILA GENERAL (LOGIN / MODAL)
-   ========================================================= */
+/*    BOTONES LILAS (LOGIN Y MODALES) */
 .btn-lila {
     background-color: #271a3d;
     border-color: #a874ff;
@@ -76,18 +133,14 @@ TITULAR IRUPÉ (animado)
     color: white;
 }
 
-/* =========================================================
-    SIDEBAR OSCURO
-   ========================================================= */
+/*   SIDEBAR - FONDO OSCURO */
 .fondoSecciones {
     background-color: #1e1e1e !important;
     box-shadow: none !important;
     border-radius: 8px;
 }
 
-/* =========================================================
-    BOTÓN "USUARIO" CENTRADO Y A TODO ANCHO
-   ========================================================= */
+/*  BOTÓN DE USUARIO (SIDEBAR) */
 .dropdown {
     width: 100%;
 }
@@ -96,13 +149,7 @@ TITULAR IRUPÉ (animado)
     background-color: #a685e2 !important;
     color: white !important;
     border: none !important;
-    width: 100% !important;
-
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
     gap: 8px;
-
     font-weight: 600;
     border-radius: 8px 8px 0 0 !important;
 }
@@ -111,9 +158,7 @@ TITULAR IRUPÉ (animado)
     background-color: #c7b0f0 !important;
 }
 
-/* =========================================================
-    DROPDOWN DEL SIDEBAR (CERRAR SESIÓN)
-   ========================================================= */
+/*  DROPDOWN "CERRAR SESIÓN" */
 .dropdown-menu {
     padding: 0;
     background-color: #1e1e1e !important;
@@ -132,57 +177,64 @@ TITULAR IRUPÉ (animado)
     color: white !important;
 }
 
-/* =========================================================
-    AGREGAR TAREA — VERSIÓN FINAL
-========================================================= */
-
-/* Contenedor en una sola línea */
+/* BOTÓN "AGREGAR TAREA" DEL SIDEBAR */
 .agregar-tarea {
-    display: flex;
-    align-items: center;
     gap: 10px;
     margin-top: 40px;
 }
 
-/* EL + (solo el ícono es clickeable) */
+/* Ícono + (lila) */
 .icono-mas i {
     font-size: 1.8rem;
-    color: #a685e2 !important;      /* LILA */
+    color: #8586e2 !important;
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
 
-/* Hover del + (lila claro) */
 .icono-mas:hover i {
     color: #c7b0f0 !important;
 }
 
-/* Texto “Agregar Tarea” (blanco, no botón) */
+/* Texto "Agregar Tarea" */
 .texto-agregar {
-    color: white;
     font-size: 1.3rem;
     font-weight: 400;
     cursor: default;
 }
 
-/* =========================================================
-    FECHAS – CÍRCULOS
-   ========================================================= */
+/*    CÍRCULOS DE FECHAS EN EL CALENDARIO
+    - Borde lila por defecto
+    - Borde de color según prioridad de tareas */
 .circuloFecha {
     background-color: #3a3a3a;
     color: white;
-    border: 8px solid var(--bs-primary) !important;
+    border: 4px solid var(--bs-primary) !important;
     transition: 0.2s ease;
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
 }
 
 .circuloFecha:hover {
     background-color: var(--bs-primary);
-    border-color: #ffffff !important;
+    transform: scale(1.05);
 }
 
-/* =========================================================
-    MODAL PERSONALIZADO
-   ========================================================= */
+/* Colores de borde según prioridad */
+.circuloFecha.border-danger {
+    border-color: #dc3545 !important;
+}
+
+.circuloFecha.border-warning {
+    border-color: #ffc107 !important;
+}
+
+.circuloFecha.border-success {
+    border-color: #198754 !important;
+}
+
+/*  MODAL PERSONALIZADO (AGREGAR/EDITAR TAREA) */
 .modal-custom {
     background-color: #c7a9e3 !important;
     border: 3px solid black !important;
@@ -200,3 +252,83 @@ TITULAR IRUPÉ (animado)
     color: black !important;
     font-weight: 600;
 }
+
+/*    ESTILOS TAREA REALIZADA */
+/* Tachar el título y el texto */
+.tarea-realizada .card-title, 
+.tarea-realizada .card-text {
+    text-decoration: line-through; 
+    color: #888; /* Color grisáceo */
+    transition: all 0.3s ease; 
+}
+
+/* Cambios en la tarjeta completa */
+.tarea-realizada {
+    opacity: 0.8; /* Se ve un poco más transparente */
+    background-color: #2b2b2b; /* Un fondo un poco más oscuro (opcional) */
+}
+
+@media (max-width: 768px) {
+
+    body {
+        padding-top: 80px; 
+    }
+    
+    nav.navbar {
+        position: fixed !important;  
+        top: 0 !important;           
+        left: 0 !important;          
+        width: 100% !important;      
+        z-index: 9999 !important;    
+        
+        border-radius: 0 !important; 
+        margin-bottom: 0 !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
+    }
+
+    .sidebar-responsive {
+        min-height: auto !important; 
+        padding-top: 10px !important;
+    }
+    
+    .titulo-irupe {
+        font-size: 1.2em; 
+    }
+
+    .btn-posicion-mobile {
+        position: static !important; 
+        margin: 20px auto !important;
+        width: 80%;
+        justify-content: center;
+    }
+    
+    .agregar-tarea {
+        margin-top: 15px;
+        justify-content: center;
+    }
+    
+    .circuloFecha {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 0.9rem !important;
+        border-width: 3px !important; 
+    }
+    
+    .dia-letra {
+        margin: 5px !important; 
+        font-size: 1rem !important; 
+    }
+    
+    .bi-arrow-left, 
+    .bi-arrow-right {
+        font-size: 1.5rem;
+    }
+    
+    .contenedor-dias {
+        overflow-x: auto; 
+        padding-bottom: 10px;
+    }
+}
+
+
+
