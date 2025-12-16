@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>IRUPÉ</title>
 
-        <!-- Bootstrap 5.3.8 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-        <!-- iconos de Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
         <link rel="stylesheet" href="style.css">
@@ -19,17 +16,15 @@
 
         <div class="container-fluid">
             <div class="row">
+                <!-- SIDEBAR -->
+                <div class="col-12 col-md-3 col-lg-2 p-2 sidebar-responsive min-vh-100">
+                    <div class="w-100 h-100 rounded fondoSecciones d-flex flex-column p-3">
 
-                <!-- SIDEBAR COMPLETO -->
-                <div class="col-12 col-md-3 col-lg-2 p-2 min-vh-100">
-                    <div class="w-100 h-100 rounded fondoSecciones d-flex flex-column">
-
-                        <!-- USUARIO -->
                         <div class="dropdown text-center">
-                            <button class="btn btn-usuario dropdown-toggle fs-3 w-100" type="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-person-circle"></i> Usuario
+                            <button class="btn dropdown-toggle d-flex align-items-center justify-content-center fs-5 w-100 btn-usuario" type="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i>
+                                <span id="nombreUsuario" class="d-inline d-md-none d-lg-inline">Usuario</span>
                             </button>
-
                             <ul class="dropdown-menu w-100">
                                 <li>
                                     <a href="#" id="btnCerrarSesion" class="dropdown-item">Cerrar Sesión</a>
@@ -37,76 +32,129 @@
                             </ul>
                         </div>
 
-                        <!-- AGREGAR TAREA -->
-                        <div class="agregar-tarea">
+                        <div class="d-flex align-items-center agregar-tarea">
                             <a href="#modalTarea" class="icono-mas" data-bs-toggle="modal" data-bs-target="#modalTarea">
                                 <i class="bi bi-plus-circle-fill"></i>
                             </a>
                             <span class="texto-agregar">Agregar Tarea</span>
                         </div>
+
+                        <div class="mt-4 border-top border-secondary pt-4">
+                            <h5 class="text-white text-center mb-3">Filtrar</h5>
+
+                            <div class="d-flex flex-column gap-3">
+                                <div>
+                                    <label class="text-white-50 small mb-1">Por Prioridad:</label>
+                                    <select id="filtroPrioridad" class="form-select form-select-sm bg-dark text-white border-secondary">
+                                        <option value="todas">Todas</option>
+                                        <option value="alta">Alta</option>
+                                        <option value="media">Media</option>
+                                        <option value="baja">Baja</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="text-white-50 small mb-1">Por Fecha:</label>
+                                    <input type="date" id="filtroFecha" class="form-control form-select-sm bg-dark text-white border-secondary">
+                                </div>
+
+                                <button id="btnLimpiarFiltros" class="btn btn-outline-light btn-sm w-100 mt-2">
+                                    Ver todas
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- parte superior de logo y nombre -->
+                <!-- CONTENIDO PRINCIPAL -->
                 <div class="col-12 col-md-9 col-lg-10 py-2">
-                    <nav class="navbar rounded bg-primary">
-                        <a class="navbar-brand d-flex align-items-center ms-auto" href="#">
+                    <!-- Navbar -->
+                    <nav class="navbar rounded bg-primary mb-3">
+                        <a class="navbar-brand d-flex align-items-center ms-auto pe-3">
                             <span class="me-2 text-white">IRUPÉ</span>
                             <img src="img/logo.png" alt="Logo" width="30" height="30">
                         </a>
                     </nav>
 
-                    <!-- parte de fechas -->
-                    <div class="container rounded mt-5 fondoSecciones">
-                        <div class="d-flex justify-content-between align-items-center fs-1">
-                            <a href="#" class="text-primary">
-                                <i id="flechaIzq" class="bi bi-arrow-left"></i>
-                            </a>
-                            <div><h2 id="mes" class="m-4 text-center"></h2> <h2 id="anioActual" class="m-4 text-center">2025</h2></div>
+                    <!-- Calendario -->
+                    <div class="container rounded mt-3 p-3 fondoSecciones">
+                        <div class="d-flex justify-content-between align-items-center fs-3 mb-3">
+                            <!-- Flecha izquierda -->
+                            <a href="#" class="text-primary" id="flechaIzq"><i class="bi bi-arrow-left"></i></a>
                             
+                            <!-- Selector de Mes y Año (clickeable) -->
+                            <div class="d-flex align-items-center justify-content-center gap-2">
+                                <!-- Dropdown Mes -->
+                                <div class="dropdown">
+                                    <button class="btn btn-selector-fecha dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        <span id="mes"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-fecha" id="menuMeses">
+                                        <li><a class="dropdown-item" href="#" data-mes="1">Enero</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="2">Febrero</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="3">Marzo</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="4">Abril</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="5">Mayo</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="6">Junio</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="7">Julio</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="8">Agosto</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="9">Septiembre</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="10">Octubre</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="11">Noviembre</a></li>
+                                        <li><a class="dropdown-item" href="#" data-mes="12">Diciembre</a></li>
+                                    </ul>
+                                </div>
 
-                            <a href="#" class="text-primary">
-                                <i id="flechaDer" class="bi bi-arrow-right"></i>
-                            </a>   
+                                <!-- Dropdown Año -->
+                                <div class="dropdown">
+                                    <button class="btn btn-selector-fecha dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        <span id="anioActual"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-fecha" id="menuAnios">
+                                        <!-- Se genera dinámicamente con JS -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Flecha derecha -->
+                            <a href="#" class="text-primary" id="flechaDer"><i class="bi bi-arrow-right"></i></a>
                         </div>
-
-                        <div class="d-flex justify-content-between align-items-center mb-4 text-center mx-3">
-                            <div>
-                                <button id="fechaDomingo" class="btn rounded-circle p-3 text-white circuloFecha"></button>
-                                <div class="col rounded m-4 fs-3 text-primary">D</div>
+                        
+                        <!-- Días de la semana -->
+                        <div class="d-flex justify-content-between align-items-center mb-2 text-center contenedor-dias">
+                            <div class="mx-1">
+                                <button id="fechaDomingo" class="btn rounded-circle d-flex align-items-center justify-content-center circuloFecha" data-bs-toggle="modal" data-bs-target="#modalTarea"></button>
+                                <div class="mt-2 fs-5 text-primary dia-letra">D</div>
                             </div>
-
-                            <div>            
-                                <button id="fechaLunes" class="btn rounded-circle p-3 text-white circuloFecha"></button>
-                                <div class="col rounded m-4 fs-3 text-primary">L</div>
+                            <div class="mx-1">
+                                <button id="fechaLunes" class="btn rounded-circle d-flex align-items-center justify-content-center circuloFecha" data-bs-toggle="modal" data-bs-target="#modalTarea"></button>
+                                <div class="mt-2 fs-5 text-primary dia-letra">L</div>
                             </div>
-
-                            <div>
-                                <button id="fechaMartes" class="btn rounded-circle p-3 text-white circuloFecha"></button>
-                                <div class="col rounded m-4 fs-3 text-primary">M</div>
+                            <div class="mx-1">
+                                <button id="fechaMartes" class="btn rounded-circle d-flex align-items-center justify-content-center circuloFecha" data-bs-toggle="modal" data-bs-target="#modalTarea"></button>
+                                <div class="mt-2 fs-5 text-primary dia-letra">M</div>
                             </div>
-
-                            <div>
-                                <button id="fechaMiercoles" class="btn rounded-circle p-3 text-white circuloFecha"></button>
-                                <div class="col rounded m-4 fs-3 text-primary">M</div>
+                            <div class="mx-1">
+                                <button id="fechaMiercoles" class="btn rounded-circle d-flex align-items-center justify-content-center circuloFecha" data-bs-toggle="modal" data-bs-target="#modalTarea"></button>
+                                <div class="mt-2 fs-5 text-primary dia-letra">M</div>
                             </div>
-                            
-                            <div>
-                                <button id="fechaJueves" class="btn rounded-circle p-3 text-white circuloFecha"></button>
-                                <div class="col rounded m-4 fs-3 text-primary">J</div>
+                            <div class="mx-1">
+                                <button id="fechaJueves" class="btn rounded-circle d-flex align-items-center justify-content-center circuloFecha" data-bs-toggle="modal" data-bs-target="#modalTarea"></button>
+                                <div class="mt-2 fs-5 text-primary dia-letra">J</div>
                             </div>
-
-                            <div>
-                                <button id="fechaViernes" class="btn rounded-circle p-3 text-white circuloFecha"></button>
-                                <div class="col rounded m-4 fs-3 text-primary">V</div>
+                            <div class="mx-1">
+                                <button id="fechaViernes" class="btn rounded-circle d-flex align-items-center justify-content-center circuloFecha" data-bs-toggle="modal" data-bs-target="#modalTarea"></button>
+                                <div class="mt-2 fs-5 text-primary dia-letra">V</div>
                             </div>
-                                
-                            <div>
-                                <button id="fechaSabado" class="btn rounded-circle p-3 text-white circuloFecha"></button>
-                                <div class="col rounded m-4 fs-3 text-primary">S</div>
+                            <div class="mx-1">
+                                <button id="fechaSabado" class="btn rounded-circle d-flex align-items-center justify-content-center circuloFecha" data-bs-toggle="modal" data-bs-target="#modalTarea"></button>
+                                <div class="mt-2 fs-5 text-primary dia-letra">S</div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Lista de Tareas -->
                     <div class="container mt-4">
                         <h3 class="mb-3 text-white">Mis Tareas</h3>
                         <div id="contenedorTareas" class="row"></div>
@@ -115,52 +163,46 @@
             </div>
         </div>
 
-        <!-- ================= MODAL AGREGAR TAREA ================= -->
+        <!-- MODAL TAREA -->
         <div class="modal fade" id="modalTarea">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content modal-custom">
-
-                    <form action="">
-                        <div class="modal-header border-black">
-                            <h5 class="modal-title">Agregar tarea</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <div class="modal-header border-black">
+                        <h5 class="modal-title">Agregar tarea</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Tarea</label>
+                            <input type="text" class="form-control campoModal" id="tareaNombre" maxlength="40">
                         </div>
-                    
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label class="form-label">Tarea</label>
-                                <input type="text" class="form-control campoModal" id="tareaNombre">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Fecha</label>
-                                <input type="date" class="form-control campoModal" id="tareaFecha">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Prioridad</label>
-                                <select class="form-select campoModal" id="tareaPrioridad">
-                                    <option value="alta" class="bg-danger">Alta</option>
-                                    <option value="media" class="bg-warning">Media</option>
-                                    <option value="baja" class="bg-success">Baja</option>
-                                </select>
-                            </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha</label>
+                            <input type="date" class="form-control campoModal" id="tareaFecha">
                         </div>
-
-                        <div class="modal-footer border-black">
-                            <button type="reset" class="btn btn-lila" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-lila" id="btnGuardarTarea">Guardar</button>
+                        <div class="mb-3">
+                            <label class="form-label">Prioridad</label>
+                            <select class="form-select campoModal" id="tareaPrioridad">
+                                <option value="alta">Alta</option>
+                                <option value="media">Media</option>
+                                <option value="baja">Baja</option>
+                            </select>
                         </div>
-
-                    </form>
+                    </div>
+                    <div class="modal-footer border-black">
+                        <button type="button" class="btn btn-lila" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-lila" id="btnGuardarTarea">Guardar</button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-        <script src="cerrarSesion.js"></script>
+         <script src="app.js"></script>
+         <script src="seteandoFechas.js"></script>
         <script src="agregarTareas.js"></script>
-        <script src="seteandoFechas.js" ></script>
+        <script src="mockData.js"></script>
+        <script src="cerrarSesion.js"></script>
+
     </body>
 </html>
